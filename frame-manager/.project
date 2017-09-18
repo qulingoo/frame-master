@@ -3,6 +3,8 @@
 	<name>frame-manager</name>
 	<comment></comment>
 	<projects>
+		<project>frame-builder</project>
+		<project>frame-redis-cache</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

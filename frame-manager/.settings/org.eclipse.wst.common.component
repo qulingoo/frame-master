@@ -4,6 +4,12 @@
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <dependent-module archiveName="frame-builder.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/frame-builder/frame-builder">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="frame-redis-cache.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/frame-redis-cache/frame-redis-cache">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="context-root" value="frame-master"/>
         <property name="java-output-path" value="/frame-manager/target/classes"/>
     </wb-module>
