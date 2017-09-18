@@ -3,6 +3,7 @@ package com.qlk.redis;
 import java.io.IOException;
 import java.util.Properties;
 
+import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 
@@ -16,15 +17,33 @@ public class RedisModule {
 	private static RedisModule redisModule;
 	private JedisPool jedisPool;
 
+	public static void main(String[] args) {
+		RedisModule instance = getInstance();
+		Jedis resource = instance.jedisPool.getResource();
+		String lpop = resource.lpop("a");
+		System.out.println(lpop);
+
+	}
+
 	private RedisModule() {
 		try {
 			jedisPool = jedisPool();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
+	public static RedisModule getInstance() {
+
+		synchronized (RedisModule.class) {
+			if (redisModule == null) {
+				redisModule = new RedisModule();
+			}
+			return redisModule;
+		}
+
+	}
+	
 	private JedisPool jedisPool() throws IOException {
 		Properties props = new Properties();
 
@@ -41,17 +60,33 @@ public class RedisModule {
 		JedisPool pool = new JedisPool(config, props.getProperty("redis.ip"),
 				Integer.valueOf(props.getProperty("redis.port")), 20000, props.getProperty("redis.password"));
 		return pool;
-
+	}
+	public Jedis getJdeis() {
+		return jedisPool.getResource();
+	}
+	/**
+	 * 设置值
+	 * 
+	 * @param key
+	 * @param value
+	 */
+	public void set(String key, String value) {
+		Jedis jedis = jedisPool.getResource();
+		jedis.set(key, value);
+		jedis.close();
 	}
 
-	public static RedisModule getInstance() {
-
-		synchronized (RedisModule.class) {
-			if (redisModule == null) {
-				redisModule = new RedisModule();
-			}
-			return redisModule;
-		}
-
+	/**
+	 * 获取值
+	 * 
+	 * @param key
+	 * @return
+	 */
+	public String get(String key) {
+		Jedis jedis = jedisPool.getResource();
+		String value = jedis.get(key);
+		jedis.close();
+		return value;
 	}
+
 }
