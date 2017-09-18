@@ -7,6 +7,7 @@
 	<packaging>pom</packaging>
 	<modules>
 		<module>frame-redis-cache</module>
+		<module>frame-builder</module>
 	</modules>
 	<dependencies>
 		<dependency>

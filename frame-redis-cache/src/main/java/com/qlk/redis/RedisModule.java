@@ -17,14 +17,6 @@ public class RedisModule {
 	private static RedisModule redisModule;
 	private JedisPool jedisPool;
 
-	public static void main(String[] args) {
-		RedisModule instance = getInstance();
-		Jedis resource = instance.jedisPool.getResource();
-		String lpop = resource.lpop("a");
-		System.out.println(lpop);
-
-	}
-
 	private RedisModule() {
 		try {
 			jedisPool = jedisPool();
@@ -43,7 +35,7 @@ public class RedisModule {
 		}
 
 	}
-	
+
 	private JedisPool jedisPool() throws IOException {
 		Properties props = new Properties();
 
@@ -61,32 +53,9 @@ public class RedisModule {
 				Integer.valueOf(props.getProperty("redis.port")), 20000, props.getProperty("redis.password"));
 		return pool;
 	}
+
 	public Jedis getJdeis() {
 		return jedisPool.getResource();
-	}
-	/**
-	 * 设置值
-	 * 
-	 * @param key
-	 * @param value
-	 */
-	public void set(String key, String value) {
-		Jedis jedis = jedisPool.getResource();
-		jedis.set(key, value);
-		jedis.close();
-	}
-
-	/**
-	 * 获取值
-	 * 
-	 * @param key
-	 * @return
-	 */
-	public String get(String key) {
-		Jedis jedis = jedisPool.getResource();
-		String value = jedis.get(key);
-		jedis.close();
-		return value;
 	}
 
 }
