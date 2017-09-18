@@ -1,20 +1,20 @@
 package com.qlk.redis.mq;
 
 /**
- * Ïû·ÑÕß
+ * æ¶ˆè´¹è€…
  * 
  * @author shuyun
  *
  */
 public class Consumer {
-	private ConsumerWoker worker;// Ïû·ÑÕßÏß³Ì
+	private ConsumerWoker worker;// æ¶ˆè´¹çº¿ç¨‹
 
 	/**
 	 * 
 	 * @param topic
-	 *            ÏûÏ¢¶ÓÁÐÖ÷Ìâ
+	 *           ä¸»é¢˜
 	 * @param callback
-	 *            »Øµ÷º¯Êý
+	 *           å›žè°ƒå‡½æ•°
 	 */
 	public Consumer(final String topic, final ConsumerCallback callback) {
 
@@ -22,14 +22,14 @@ public class Consumer {
 	}
 
 	/**
-	 * Ïû·Ñ
+	 * æ¶ˆè´¹
 	 */
 	public void consume() {
 		worker.start();
 	}
 
 	/**
-	 * Í£Ö¹Ïû·ÑÕßÏß³Ì
+	 * å…³é—­
 	 */
 	public void close() {
 		worker.close();

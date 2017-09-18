@@ -1,21 +1,21 @@
 package com.qlk.redis.mq;
 
 /**
- * redisÏûÏ¢¶ÓÁĞ
+ * redisæ¶ˆæ¯é˜Ÿåˆ—
  * 
  * @author shuyun
  *
  */
 public class RedisMessageQueue {
 	/**
-	 * ¹¹½¨Éú²úÕß
+	 * è·å–ç”Ÿäº§è€…
 	 * @return
 	 */
 	public static Producer getProducer(String topic) {
 		return new Producer(topic);
 	}
 	/**
-	 * ¹¹½¨Ïû·ÑÕß
+	 * è·å–æ¶ˆè´¹è€…
 	 * @param tipoc
 	 * @param callback
 	 * @return

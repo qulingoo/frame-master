@@ -8,7 +8,7 @@ import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 
 /**
- * redis模块 redis 连接池 redis 操作
+ * reids妯″潡
  * 
  * @author shuyun
  *
@@ -41,7 +41,6 @@ public class RedisModule {
 
 		props.load(RedisModule.class.getClassLoader().getResourceAsStream("redis.properties"));
 
-		// 创建jedis池配置实例
 
 		JedisPoolConfig config = new JedisPoolConfig();
 		config.setMaxIdle(Integer.valueOf(props.getProperty("jedis.pool.maxActive")));

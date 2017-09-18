@@ -1,6 +1,6 @@
 package com.qlk.redis.mq;
 /**
- * Ïû·ÑÕß»Øµ÷º¯Êý
+ * æ¶ˆè´¹è€…å›žè°ƒå‡½æ•°
  * @author shuyun
  *
  */
