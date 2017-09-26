@@ -16,7 +16,7 @@ public class ConsumerWoker extends Thread {
 		this.jedis = RedisModule.getInstance().getJdeis();
 	}
 
-	@Override
+	
 	public void run() {
 		while (!isClose) {
 			if (jedis.isConnected()) {
