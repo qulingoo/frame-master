@@ -3,7 +3,11 @@ package com.qlk.config;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
-
+/**
+ * ≈‰÷√
+ * @author shuyun
+ *
+ */
 public class Configure {
 	private static Configure config;
 	private ResourceBundle configResource;
