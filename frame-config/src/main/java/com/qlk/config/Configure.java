@@ -31,8 +31,22 @@ public class Configure {
 		return value;
 	}
 
+	public String getString(String key) {
+		Object value = get(key);
+		return value == null ? null : value.toString();
+	}
+
 	public void set(String key, Object value) {
 		extraConfig.put(key, value);
+	}
+
+	public boolean exist(String key) {
+		boolean flag = false;
+		flag = configResource.containsKey(key);
+		if (!flag) {
+			flag = extraConfig.containsKey(key);
+		}
+		return flag;
 	}
 
 }
