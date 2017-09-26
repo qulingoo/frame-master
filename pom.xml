@@ -9,7 +9,8 @@
 		<module>frame-redis-cache</module>
 		<module>frame-builder</module>
     <module>frame-manager</module>
-  </modules>
+    <module>frame-config</module>
+	</modules>
 	<properties>
 		<srping.version>4.0.2.RELEASE</srping.version>
 		<mybatis.version>3.2.8</mybatis.version>
