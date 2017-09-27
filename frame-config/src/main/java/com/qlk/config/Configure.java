@@ -1,56 +1,28 @@
 package com.qlk.config;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.ResourceBundle;
-/**
- * 配置
- * @author shuyun
- *
- */
-public class Configure {
-	private static Configure config;
-	private ResourceBundle configResource;
-	private Map<String, Object> extraConfig;
-
-	private Configure() {
-		configResource = ResourceBundle.getBundle("config");
-		extraConfig = new HashMap<>();
-	}
-
-	public static Configure getConfigure() {
-		synchronized (Configure.class) {
-			if (config == null) {
-				config = new Configure();
-			}
-			return config;
-		}
-	}
-
-	public Object get(String key) {
-		Object value = configResource.getObject(key);
-		if (value == null) {
-			value = extraConfig.get(key);
-		}
-		return value;
-	}
-
-	public String getString(String key) {
-		Object value = get(key);
-		return value == null ? null : value.toString();
-	}
-
-	public void set(String key, Object value) {
-		extraConfig.put(key, value);
-	}
-
-	public boolean exist(String key) {
-		boolean flag = false;
-		flag = configResource.containsKey(key);
-		if (!flag) {
-			flag = extraConfig.containsKey(key);
-		}
-		return flag;
-	}
-
+public interface Configure {
+	/**
+	 * 通过key获取值
+	 * @param key
+	 * @return
+	 */
+	public Object get(String key);
+	/**
+	 * 通过key获取值字符串
+	 * @param key
+	 * @return
+	 */
+	public String getString(String key);
+	/**
+	 * 设置值
+	 * @param key
+	 * @param value
+	 */
+	public void set(String key, Object value);
+	/**
+	 * 判断值是否存在
+	 * @param key
+	 * @return
+	 */
+	public boolean exist(String key);
 }

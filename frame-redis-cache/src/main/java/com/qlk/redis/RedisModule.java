@@ -8,7 +8,7 @@ import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 
 /**
- * reidsæ¨¡å—
+ * reidsÄ£¿é
  * 
  * @author shuyun
  *

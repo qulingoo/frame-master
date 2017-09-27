@@ -7,7 +7,7 @@ package com.qlk.redis.mq;
  *
  */
 public class Consumer {
-	private ConsumerWoker worker;// 消费线程
+	private ConsumerWoker worker;// 娑堣垂绾跨▼
 
 	/**
 	 * 
