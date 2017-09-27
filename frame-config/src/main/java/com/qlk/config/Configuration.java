@@ -10,20 +10,20 @@ import java.util.ResourceBundle;
  * @author qlk
  *
  */
-public class Configuation implements Configure {
-	private static Configuation config;
+public class Configuration implements Configure {
+	private static Configuration config;
 	private ResourceBundle configResource;
 	private Map<String, Object> extraConfig;
 
-	private Configuation() {
-		configResource = ResourceBundle.getBundle("config");
+	private Configuration() {
+		configResource = ResourceBundle.getBundle("frame-config");
 		extraConfig = new HashMap<>();
 	}
 
-	public static Configuation getConfigure() {
-		synchronized (Configuation.class) {
+	public static Configuration getConfigure() {
+		synchronized (Configuration.class) {
 			if (config == null) {
-				config = new Configuation();
+				config = new Configuration();
 			}
 			return config;
 		}
