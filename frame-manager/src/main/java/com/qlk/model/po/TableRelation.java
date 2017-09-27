@@ -1,5 +1,9 @@
 package com.qlk.model.po;
-
+/**
+ * 表约束
+ * @author shuyun
+ *
+ */
 public class TableRelation {
     private String relationId;
 

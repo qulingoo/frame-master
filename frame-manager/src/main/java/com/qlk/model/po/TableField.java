@@ -1,7 +1,11 @@
 package com.qlk.model.po;
 
 import java.util.Date;
-
+/**
+ * 表字段
+ * @author qlk
+ *
+ */
 public class TableField {
     private String id;
 
