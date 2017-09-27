@@ -7,21 +7,21 @@ import java.util.Date;
  *
  */
 public class TableModel {
-    private String id;
+    private String id;//编号
 
-    private String tableNameChn;
+    private String tableNameChn;//表中文名
 
-    private String tableNameEng;
+    private String tableNameEng;//表英文名
 
-    private String pkgId;
+    private String pkgId;//包编号
 
-    private Integer dindex;
+    private Integer dindex;//序号
 
-    private Date createTime;
+    private Date createTime;//创建时间
 
-    private Date changeTime;
+    private Date changeTime;//修改时间
 
-    private String describes;
+    private String describes;//描述
 
     public String getId() {
         return id;

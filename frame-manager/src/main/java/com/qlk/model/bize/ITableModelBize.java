@@ -1,10 +1,10 @@
-package com.qlk.model.dao;
+package com.qlk.model.bize;
 
 import java.util.List;
 
 import com.qlk.model.po.TableModel;
 
-public interface TableModelMapper {
+public interface ITableModelBize {
 	int delete(String id);
 
 	int insert(TableModel record);
@@ -14,5 +14,4 @@ public interface TableModelMapper {
 	List<TableModel> findAll();
 
 	int update(TableModel record);
-
 }

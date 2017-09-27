@@ -9,7 +9,7 @@ public interface TableFieldMapper {
 
 	int insert(TableField record);
 
-	TableField findById(String id);
+	TableField findByID(String id);
 
 	List<TableField> findByTableId(String tableId);
 
