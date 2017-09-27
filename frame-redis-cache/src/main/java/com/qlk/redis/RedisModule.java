@@ -8,7 +8,7 @@ import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 
 /**
- * reidsƒ£øÈ
+ * reidsÊ®°Âùó
  * 
  * @author shuyun
  *
@@ -38,10 +38,7 @@ public class RedisModule {
 
 	private JedisPool jedisPool() throws IOException {
 		Properties props = new Properties();
-
 		props.load(RedisModule.class.getClassLoader().getResourceAsStream("redis.properties"));
-
-
 		JedisPoolConfig config = new JedisPoolConfig();
 		config.setMaxIdle(Integer.valueOf(props.getProperty("jedis.pool.maxActive")));
 		config.setMaxIdle(Integer.valueOf(props.getProperty("jedis.pool.maxIdle")));
