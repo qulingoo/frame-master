@@ -7,10 +7,5 @@
     <import resource="classpath:META-INF/cxf/cxf.xml" />
     <import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
 
-    <!--  Cxf WebService 服务端示例 -->
-    <jaxws:endpoint id="DemoWebservice" implementor="com.shuyun.webservices.impl.DemoWebserviceImpl" address="/demo"/>
-
-    <!--  Cxf WebService 客户端示例 -->
-    <jaxws:client id="demoClient" serviceClass="com.shuyun.webservices.DemoWebservice" address="http://localhost:8080/test/services/demo?wsdl" />
-
+   
 </beans>

@@ -14,7 +14,7 @@ public class Configure {
 	private Map<String, Object> extraConfig;
 
 	private Configure() {
-		configResource = ResourceBundle.getBundle("messages");
+		configResource = ResourceBundle.getBundle("config");
 		extraConfig = new HashMap<>();
 	}
 
