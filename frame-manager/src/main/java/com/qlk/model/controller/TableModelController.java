@@ -3,18 +3,17 @@ package com.qlk.model.controller;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.qlk.model.po.TableModel;
 
 @Controller
-@RequestMapping("tableModel")
+@RequestMapping("/tableModel")
 public class TableModelController {
-
-	@RequestMapping(method = RequestMethod.POST,value= "/delete/{id}")
-	public int delete(@PathVariable("id")String id) {
+	@ResponseBody
+	@RequestMapping( "/delete" )
+	public int delete(  String id) {
 		return 0;
 	}
 

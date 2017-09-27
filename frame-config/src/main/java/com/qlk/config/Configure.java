@@ -2,25 +2,25 @@ package com.qlk.config;
 
 public interface Configure {
 	/**
-	 * Í¨¹ıkey»ñÈ¡Öµ
+	 * é€šè¿‡keyè·å–å€¼
 	 * @param key
 	 * @return
 	 */
 	public Object get(String key);
 	/**
-	 * Í¨¹ıkey»ñÈ¡Öµ×Ö·û´®
+	 * é€šè¿‡keyè·å–å€¼å­—ç¬¦ä¸²
 	 * @param key
 	 * @return
 	 */
 	public String getString(String key);
 	/**
-	 * ÉèÖÃÖµ
+	 * è®¾ç½®å€¼
 	 * @param key
 	 * @param value
 	 */
 	public void set(String key, Object value);
 	/**
-	 * ÅĞ¶ÏÖµÊÇ·ñ´æÔÚ
+	 * åˆ¤æ–­å€¼æ˜¯å¦å­˜åœ¨
 	 * @param key
 	 * @return
 	 */
