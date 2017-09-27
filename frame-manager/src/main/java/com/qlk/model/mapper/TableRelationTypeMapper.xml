@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qlk.model.dao.TableRelationTypeMapper">
+  <resultMap id="BaseResultMap" type="com.qlk.model.po.TableRelationType">
+    <id column="relation_type_id" jdbcType="VARCHAR" property="relationTypeId" />
+    <result column="relation_type_name" jdbcType="VARCHAR" property="relationTypeName" />
+    <result column="relation_type_code" jdbcType="VARCHAR" property="relationTypeCode" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    relation_type_id, relation_type_name, relation_type_code
+  </sql>
+  <select id="findByID" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from table_relation_type
+    where relation_type_id = #{relationTypeId,jdbcType=VARCHAR}
+  </select>
+  <select id="findAll" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from table_relation_type
+  </select>
+  <delete id="delete" parameterType="java.lang.String">
+    delete from table_relation_type
+    where relation_type_id = #{relationTypeId,jdbcType=VARCHAR}
+  </delete>
+   
+  <insert id="insert" parameterType="com.qlk.model.po.TableRelationType">
+    insert into table_relation_type
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="relationTypeId != null">
+        relation_type_id,
+      </if>
+      <if test="relationTypeName != null">
+        relation_type_name,
+      </if>
+      <if test="relationTypeCode != null">
+        relation_type_code,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="relationTypeId != null">
+        #{relationTypeId,jdbcType=VARCHAR},
+      </if>
+      <if test="relationTypeName != null">
+        #{relationTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="relationTypeCode != null">
+        #{relationTypeCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="update" parameterType="com.qlk.model.po.TableRelationType">
+    update table_relation_type
+    <set>
+      <if test="relationTypeName != null">
+        relation_type_name = #{relationTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="relationTypeCode != null">
+        relation_type_code = #{relationTypeCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where relation_type_id = #{relationTypeId,jdbcType=VARCHAR}
+  </update>
+</mapper>

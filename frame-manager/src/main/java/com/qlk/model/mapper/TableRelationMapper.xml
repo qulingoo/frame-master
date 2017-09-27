@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qlk.model.dao.TableRelationMapper">
+	<resultMap id="BaseResultMap" type="com.qlk.model.po.TableRelation">
+		<id column="relation_id" jdbcType="VARCHAR" property="relationId" />
+		<result column="table_model_id" jdbcType="VARCHAR" property="tableModelId" />
+		<result column="relation_name" jdbcType="VARCHAR" property="relationName" />
+		<result column="relation_type" jdbcType="VARCHAR" property="relationType" />
+	</resultMap>
+	<resultMap extends="BaseResultMap" id="ResultMapWithBLOBs"
+		type="com.qlk.model.po.TableRelation">
+		<result column="relation_value" jdbcType="LONGVARBINARY"
+			property="relationValue" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		relation_id, table_model_id, relation_name, relation_type
+	</sql>
+	<sql id="Blob_Column_List">
+		relation_value
+	</sql>
+	<select id="findByID" parameterType="java.lang.String"
+		resultMap="ResultMapWithBLOBs">
+		select
+		<include refid="Base_Column_List" />
+		,
+		<include refid="Blob_Column_List" />
+		from table_relation
+		where relation_id = #{relationId,jdbcType=VARCHAR}
+	</select>
+	<select id="findByTableID" parameterType="java.lang.String"
+		resultMap="ResultMapWithBLOBs">
+		select
+		<include refid="Base_Column_List" />
+		,
+		<include refid="Blob_Column_List" />
+		from table_relation
+		where table_model_id = #{tableId,jdbcType=VARCHAR}
+	</select>
+	<delete id="delete" parameterType="java.lang.String">
+		delete from table_relation
+		where relation_id = #{relationId,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert" parameterType="com.qlk.model.po.TableRelation">
+		insert into table_relation
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="relationId != null">
+				relation_id,
+			</if>
+			<if test="tableModelId != null">
+				table_model_id,
+			</if>
+			<if test="relationName != null">
+				relation_name,
+			</if>
+			<if test="relationType != null">
+				relation_type,
+			</if>
+			<if test="relationValue != null">
+				relation_value,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="relationId != null">
+				#{relationId,jdbcType=VARCHAR},
+			</if>
+			<if test="tableModelId != null">
+				#{tableModelId,jdbcType=VARCHAR},
+			</if>
+			<if test="relationName != null">
+				#{relationName,jdbcType=VARCHAR},
+			</if>
+			<if test="relationType != null">
+				#{relationType,jdbcType=VARCHAR},
+			</if>
+			<if test="relationValue != null">
+				#{relationValue,jdbcType=LONGVARBINARY},
+			</if>
+		</trim>
+	</insert>
+	<update id="update" parameterType="com.qlk.model.po.TableRelation">
+		update table_relation
+		<set>
+			<if test="tableModelId != null">
+				table_model_id = #{tableModelId,jdbcType=VARCHAR},
+			</if>
+			<if test="relationName != null">
+				relation_name = #{relationName,jdbcType=VARCHAR},
+			</if>
+			<if test="relationType != null">
+				relation_type = #{relationType,jdbcType=VARCHAR},
+			</if>
+			<if test="relationValue != null">
+				relation_value = #{relationValue,jdbcType=LONGVARBINARY},
+			</if>
+		</set>
+		where relation_id = #{relationId,jdbcType=VARCHAR}
+	</update>
+</mapper>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qlk.model.dao.TableModelMapper">
+  <resultMap id="BaseResultMap" type="com.qlk.model.po.TableModel">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="TABLE_NAME_CHN" jdbcType="VARCHAR" property="tableNameChn" />
+    <result column="TABLE_NAME_ENG" jdbcType="VARCHAR" property="tableNameEng" />
+    <result column="PKG_ID" jdbcType="VARCHAR" property="pkgId" />
+    <result column="DINDEX" jdbcType="INTEGER" property="dindex" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="CHANGE_TIME" jdbcType="TIMESTAMP" property="changeTime" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.qlk.model.po.TableModel">
+    <result column="DESCRIBES" jdbcType="LONGVARCHAR" property="describes" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, TABLE_NAME_CHN, TABLE_NAME_ENG, PKG_ID, DINDEX, CREATE_TIME, CHANGE_TIME
+  </sql>
+  <sql id="Blob_Column_List">
+    DESCRIBES
+  </sql>
+  <select id="findByID" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from table_model
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="delete" parameterType="java.lang.String">
+    delete from table_model
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+ 
+  <insert id="insert" parameterType="com.qlk.model.po.TableModel">
+    insert into table_model
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="tableNameChn != null">
+        TABLE_NAME_CHN,
+      </if>
+      <if test="tableNameEng != null">
+        TABLE_NAME_ENG,
+      </if>
+      <if test="pkgId != null">
+        PKG_ID,
+      </if>
+      <if test="dindex != null">
+        DINDEX,
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME,
+      </if>
+      <if test="changeTime != null">
+        CHANGE_TIME,
+      </if>
+      <if test="describes != null">
+        DESCRIBES,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="tableNameChn != null">
+        #{tableNameChn,jdbcType=VARCHAR},
+      </if>
+      <if test="tableNameEng != null">
+        #{tableNameEng,jdbcType=VARCHAR},
+      </if>
+      <if test="pkgId != null">
+        #{pkgId,jdbcType=VARCHAR},
+      </if>
+      <if test="dindex != null">
+        #{dindex,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="changeTime != null">
+        #{changeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="describes != null">
+        #{describes,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="update" parameterType="com.qlk.model.po.TableModel">
+    update table_model
+    <set>
+      <if test="tableNameChn != null">
+        TABLE_NAME_CHN = #{tableNameChn,jdbcType=VARCHAR},
+      </if>
+      <if test="tableNameEng != null">
+        TABLE_NAME_ENG = #{tableNameEng,jdbcType=VARCHAR},
+      </if>
+      <if test="pkgId != null">
+        PKG_ID = #{pkgId,jdbcType=VARCHAR},
+      </if>
+      <if test="dindex != null">
+        DINDEX = #{dindex,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="changeTime != null">
+        CHANGE_TIME = #{changeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="describes != null">
+        DESCRIBES = #{describes,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+   
+</mapper>

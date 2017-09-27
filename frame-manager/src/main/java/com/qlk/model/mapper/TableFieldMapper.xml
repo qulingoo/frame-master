@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qlk.model.dao.TableFieldMapper">
+  <resultMap id="BaseResultMap" type="com.qlk.model.po.TableField">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="TABLE_MODEL_ID" jdbcType="VARCHAR" property="tableModelId" />
+    <result column="FIELD_NAME_CHN" jdbcType="VARCHAR" property="fieldNameChn" />
+    <result column="FIELD_NAME_ENG" jdbcType="VARCHAR" property="fieldNameEng" />
+    <result column="TYPE" jdbcType="INTEGER" property="type" />
+    <result column="LENGTH" jdbcType="INTEGER" property="length" />
+    <result column="ACCURACY" jdbcType="INTEGER" property="accuracy" />
+    <result column="DINDEX" jdbcType="INTEGER" property="dindex" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="CHANGE_TIME" jdbcType="TIMESTAMP" property="changeTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, TABLE_MODEL_ID, FIELD_NAME_CHN, FIELD_NAME_ENG, TYPE, LENGTH, ACCURACY, DINDEX, 
+    CREATE_TIME, CHANGE_TIME
+  </sql>
+  <select id="findByID" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from table_field
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <select id="findByTableId" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from table_field
+    where TABLE_MODEL_ID = #{tableId,jdbcType=VARCHAR}
+  </select>
+  <delete id="delete" parameterType="java.lang.String">
+    delete from table_field
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+   
+  <insert id="insert" parameterType="com.qlk.model.po.TableField">
+    insert into table_field
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="tableModelId != null">
+        TABLE_MODEL_ID,
+      </if>
+      <if test="fieldNameChn != null">
+        FIELD_NAME_CHN,
+      </if>
+      <if test="fieldNameEng != null">
+        FIELD_NAME_ENG,
+      </if>
+      <if test="type != null">
+        TYPE,
+      </if>
+      <if test="length != null">
+        LENGTH,
+      </if>
+      <if test="accuracy != null">
+        ACCURACY,
+      </if>
+        DINDEX,
+      <if test="createTime != null">
+        CREATE_TIME,
+      </if>
+      <if test="changeTime != null">
+        CHANGE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="tableModelId != null">
+        #{tableModelId,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldNameChn != null">
+        #{fieldNameChn,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldNameEng != null">
+        #{fieldNameEng,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="length != null">
+        #{length,jdbcType=INTEGER},
+      </if>
+      <if test="accuracy != null">
+        #{accuracy,jdbcType=INTEGER},
+      </if>
+        dindex(),
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="changeTime != null">
+        #{changeTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="update" parameterType="com.qlk.model.po.TableField">
+    update table_field
+    <set>
+      <if test="tableModelId != null">
+        TABLE_MODEL_ID = #{tableModelId,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldNameChn != null">
+        FIELD_NAME_CHN = #{fieldNameChn,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldNameEng != null">
+        FIELD_NAME_ENG = #{fieldNameEng,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        TYPE = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="length != null">
+        LENGTH = #{length,jdbcType=INTEGER},
+      </if>
+      <if test="accuracy != null">
+        ACCURACY = #{accuracy,jdbcType=INTEGER},
+      </if>
+      <if test="dindex != null">
+        DINDEX = #{dindex,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="changeTime != null">
+        CHANGE_TIME = #{changeTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
