@@ -58,9 +58,7 @@
 			<if test="pkgId != null">
 				PKG_ID,
 			</if>
-			<if test="dindex != null">
 				DINDEX,
-			</if>
 			CREATE_TIME,
 			CHANGE_TIME,
 			<if test="describes != null">
@@ -80,9 +78,7 @@
 			<if test="pkgId != null">
 				#{pkgId,jdbcType=VARCHAR},
 			</if>
-			<if test="dindex != null">
-				#{dindex,jdbcType=INTEGER},
-			</if>
+			dindex(),
 			NOW(),
 			NOW(),
 			<if test="describes != null">
