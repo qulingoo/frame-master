@@ -3,11 +3,12 @@ package com.qlk.model.bize.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.qlk.model.bize.ITableModelBize;
 import com.qlk.model.dao.TableModelMapper;
 import com.qlk.model.po.TableModel;
-
+@Service("iTableModelBize")
 public class ITableModelBizeImpl implements ITableModelBize {
 	@Autowired
 	private TableModelMapper tableModelMapper;

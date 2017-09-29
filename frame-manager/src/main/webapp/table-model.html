@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/vue.min.js"></script>
+<style type="text/css">
+html, body {
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	margin: 0px;
+	padding: 0px;
+	text-align: center;
+}
+
+#app {
+	width: 1200px;
+	margin: 0 auto;
+	min-height: 500px;
+}
+
+.card {
+	width: 250px;
+	height: 140px;
+	border-radius: 5px;
+	border: 1px solid #e5e5e5;
+	background: #f8f8f8;
+	float: left;
+	margin: 5px;
+	position: relative;
+	text-align: center;
+}
+
+.card .cart-title {
+	width: 200px;
+	text-align: center;
+	margin: 0 auto;
+	height: 30px;
+	line-height: 30px;
+	font-size: 15px;
+	font-weight: bold;
+	line-height: 30px;
+}
+
+.card:hover {
+	border-color: blue;
+	cursor: pointer;
+}
+
+.card .cart-subtitle {
+	width: 200px;
+	text-align: center;
+	margin: 0 auto;
+	height: 25px;
+	font-size: 13px;
+	color: #CCCCCC;
+	font-size: 13px;
+}
+
+.card .cart-describe {
+	width: 200px;
+	text-align: left;
+	margin: 0 auto;
+	height: 80px;
+	font-size: 14px;
+	text-indent: 2em;
+}
+
+.card-area {
+	min-height: 500px;
+	overflow: auto;
+}
+
+.toolbar {
+	text-align: left;
+}
+
+.windows {
+	position: absolute;
+}
+</style>
+</head>
+<body>
+	<div id="app">
+		<div class="toolbar">
+			<button>新建</button>
+			<button>修改</button>
+			<button>刷新</button>
+		</div>
+		<div class="card-area">
+
+			<div class="card" @click.prevent.self="a1($event.currentTarget)"
+				v-for="table in tables">
+				<div class="cart-title">{{table.title}}</div>
+				<div class="cart-subtitle">{{table.subtitle}}</div>
+				<div class="cart-describe">{{table.describe}}</div>
+			</div>
+		</div>
+		
+		<windows v-bind:style="windows.area"></windows>
+	</div>
+
+</body>
+<script type="text/javascript">
+	Vue.component('windows', {
+		// 声明 props
+		props : [ 'width','height' ],
+		// 就像 data 一样，prop 可以用在模板内
+		// 同样也可以在 vm 实例中像“this.message”这样使用
+		template : '<div class="windows" ><div></div></div>'
+	})
+	new Vue({
+		el : "#app",
+		data : {
+			windows:{
+				area:{
+					width:"500px",
+					height:"500px",
+				}
+			},
+			tables : [ {
+				title : "用户信息表",
+				subtitle : "user-info",
+				describe : "用户信息表"
+			}, {
+				title : "用户信息表",
+				subtitle : "user-info",
+				describe : "用户信息表"
+			}, {
+				title : "用户信息表",
+				subtitle : "user-info",
+				describe : "用户信息表"
+			} ],
+			a : 1
+		},
+		methods : {
+			a1 : function(currentTarget) {
+				currentTarget.style.display = "none"
+			}
+		}
+	})
+	
+</script>
+</html>
