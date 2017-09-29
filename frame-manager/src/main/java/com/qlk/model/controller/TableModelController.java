@@ -18,12 +18,12 @@ public class TableModelController {
 	@ResponseBody
 	@RequestMapping( "/delete" )
 	public int delete(  String id) {
-		return 0;
+		return iTableModelBize.delete(id);
 	}
 	@ResponseBody
 	@RequestMapping( "/insert" )
 	public int insert(TableModel record) {
-		return 0;
+		return iTableModelBize.insert(record);
 	}
 	@ResponseBody
 	@RequestMapping( "/findByID" )
@@ -33,11 +33,11 @@ public class TableModelController {
 	@ResponseBody
 	@RequestMapping( "/findAll" )
 	public List<TableModel> findAll() {
-		return null;
+		return iTableModelBize.findAll();
 	}
 	@ResponseBody
 	@RequestMapping( "/update" )
 	public int update(TableModel record) {
-		return 0;
+		return iTableModelBize.update(record);
 	}
 }
