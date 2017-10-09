@@ -17,7 +17,7 @@ public class TableModelController {
 	private ITableModelBize iTableModelBize;
 	@ResponseBody
 	@RequestMapping( "/delete" )
-	public int delete(  String id) {
+	public int delete(String id) {
 		return iTableModelBize.delete(id);
 	}
 	@ResponseBody
